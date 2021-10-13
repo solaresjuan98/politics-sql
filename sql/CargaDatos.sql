@@ -22,3 +22,10 @@ insert into municipalities (municipality_name, department_code)
 select distinct municipality, d.department_code
 from temporal_table
          join departments d on temporal_table.department = d.department_name;
+
+
+-- POLITICAL PARTIES
+INSERT INTO politic_party(abbreviate_name, full_name, country_code)
+select distinct political_party, party_name, c.country_code
+from temporal_table
+         join countries c on temporal_table.country = c.country_name;
