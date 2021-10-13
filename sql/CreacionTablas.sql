@@ -36,3 +36,15 @@ CREATE TABLE MUNICIPALITIES
     primary key (municipality_code),
     foreign key (department_code) references DEPARTMENTS (department_code)
 );
+
+
+
+CREATE TABLE POLITIC_PARTY
+(
+    pol_party_code  int auto_increment not null,
+    abbreviate_name varchar(50)        not null,
+    full_name       varchar(50),
+    country_code    int                not null,
+    primary key (pol_party_code),
+    foreign key (country_code) references COUNTRIES (country_code)
+);
