@@ -101,3 +101,19 @@ CREATE TABLE POLITICAL_RESULT
     foreign key (municipality_code) references MUNICIPALITIES (municipality_code),
     foreign key (election_code) references ELECTIONS (election_code)
 );
+
+
+-- ==============================================
+CREATE TABLE GENDER
+(
+    gender_code int auto_increment not null,
+    gender_type varchar(50)        not null,
+    primary key (gender_code)
+);
+
+CREATE TABLE RACE
+(
+    race_code int auto_increment not null,
+    race_name varchar(50)        not null,
+    primary key (race_code)
+);

@@ -81,3 +81,63 @@ from temporal_table
     join municipalities m
     on temporal_table.municipality = m.municipality_name
         and d.department_code = m.department_code;
+
+
+
+
+-- Insert into 'POLITICAL_RESULT' table
+insert into political_result
+    (municipality_code, election_code, political_party_code)
+select m.municipality_code,
+    e.election_code,
+    pp.pol_party_code
+from temporal_table
+    join countries c on temporal_table.country = c.country_name
+    join elections e on temporal_table.election_name = e.election_name
+        and e.country_code = c.country_code
+    join regions r on temporal_table.region = r.region_name
+    join departments d on temporal_table.department = d.department_name
+        and d.region_code = r.region_code
+    join municipalities m
+    on temporal_table.municipality = m.municipality_name
+        and d.department_code = m.department_code
+    join politic_party pp on temporal_table.political_party = pp.abbreviate_name;
+
+
+
+-- Insert into GENDER_RESULT table
+insert into gender_result
+    (municipality_code, election_code, gender_code)
+select m.municipality_code,
+    e.election_code,
+    g.gender_code
+from temporal_table
+    join countries c on temporal_table.country = c.country_name
+    join elections e on temporal_table.election_name = e.election_name
+        and e.country_code = c.country_code
+    join regions r on temporal_table.region = r.region_name
+    join departments d on temporal_table.department = d.department_name
+        and d.region_code = r.region_code
+    join municipalities m
+    on temporal_table.municipality = m.municipality_name
+        and d.department_code = m.department_code
+    join gender g on temporal_table.gender = g.gender_type;
+
+
+-- Insert into 'RACE_RESULT'
+insert into race_result
+    (municipality_code, election_code, race_code)
+select m.municipality_code,
+    e.election_code,
+    ra.race_code
+from temporal_table
+    join countries c on temporal_table.country = c.country_name
+    join elections e on temporal_table.election_name = e.election_name
+        and e.country_code = c.country_code
+    join regions r on temporal_table.region = r.region_name
+    join departments d on temporal_table.department = d.department_name
+        and d.region_code = r.region_code
+    join municipalities m
+    on temporal_table.municipality = m.municipality_name
+        and d.department_code = m.department_code
+    join race ra on temporal_table.race = ra.race_name;
