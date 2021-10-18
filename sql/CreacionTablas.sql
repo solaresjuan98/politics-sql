@@ -48,3 +48,56 @@ CREATE TABLE POLITIC_PARTY
     primary key (pol_party_code),
     foreign key (country_code) references COUNTRIES (country_code)
 );
+
+
+CREATE TABLE ELECTION_RESULTS
+(
+    election_result_code  int auto_increment not null,
+    election_name         varchar(50)        not null,
+    election_year         int                not null,
+    gender                varchar(50)        not null,
+    race                  varchar(50)        not null,
+    literate_voters       int                not null,
+    illiterate_voters     int                not null,
+    elementary_lvl_voters int                not null,
+    high_school_voters    int                not null,
+    university_lvl_voter  int                not null,
+    municipality          varchar(50)        not null,
+    pp_code               int                not null,
+    country_code          int                not null,
+    primary key (election_result_code),
+    foreign key (pp_code) references POLITIC_PARTY (pol_party_code),
+    foreign key (country_code) references COUNTRIES (country_code)
+);
+
+
+
+CREATE TABLE LITERACY_LEVEL_RESULT
+(
+    municipality_code int not null,
+    election_code     int not null,
+    literate_voters   int not null,
+    illiterate_voters int not null,
+    foreign key (municipality_code) references MUNICIPALITIES (municipality_code),
+    foreign key (election_code) references ELECTIONS (election_code)
+);
+
+CREATE TABLE SCHOLARSHIP_LEVEL_RESULT
+(
+    municipality_code int not null,
+    election_code     int not null,
+    elementary_level  int not null,
+    high_school_level int not null,
+    university_level  int not null,
+    foreign key (municipality_code) references MUNICIPALITIES (municipality_code),
+    foreign key (election_code) references ELECTIONS (election_code)
+);
+
+CREATE TABLE POLITICAL_RESULT
+(
+    municipality_code    int not null,
+    election_code        int not null,
+    political_party_code int not null,
+    foreign key (municipality_code) references MUNICIPALITIES (municipality_code),
+    foreign key (election_code) references ELECTIONS (election_code)
+);
