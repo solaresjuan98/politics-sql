@@ -77,3 +77,12 @@ from (
          group by country_name, department_name
      ) temp
 group by country_name;
+
+
+-- get total votes by department
+create view departments_votes_count as
+select d.department_code, d.department_name, sum(literate_voters) + sum(illiterate_voters) as total_voters
+from election_results
+         join municipalities m on election_results.municipality_code = m.municipality_code
+         join departments d on m.department_code = d.department_code
+group by d.department_name;
