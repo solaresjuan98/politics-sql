@@ -129,7 +129,7 @@ En la 3FN se buscó lo siguiente:
 
 ## RAZA
 
-Un dato que se encontraba de forma frecuente en la tabla <b>RESULTADOS</b> de la 
+Un dato que se encontraba de forma frecuente en la tabla <b>RESULTADOS</b> de la
 de las fases anteriores era la raza, por lo cual decidio generarse una tabla que contiene las razas (Indigena, Ladina, Garifuna) a forma de catálogo, para poder ser identificada facilmente en la tabla de resultados.
 
 ![raza_3fn](img/3FN/raza_3fn.png)
