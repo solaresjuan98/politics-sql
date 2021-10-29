@@ -1,4 +1,3 @@
-
 /*
 3. Desplegar el nombre del país, nombre del partido político y número de
 alcaldías de los partidos políticos que ganaron más alcaldías por país.
@@ -52,5 +51,6 @@ from (
             temporal3.dep = temp_tabl2.department_name and
             temporal3.total_votes = temp_tabl2.votes_earned and
             temporal3.muni = temp_tabl2.municipality_name
-    group by temp_tabl2.country_name, temp_tabl2.full_name) temporal4
+    group by temp_tabl2.country_name, temp_tabl2.full_name
+    order by country_name, elections_won desc) temporal4
 group by cntry_name;

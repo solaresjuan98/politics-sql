@@ -7,8 +7,7 @@
 
 select c.country_name,
     department_name,
-    -- (sum(literate_voters) + sum(illiterate_voters)) as sub_total,
-    -- total_voters,
+    (sum(literate_voters) + sum(illiterate_voters)) as total_voters,
     ((sum(literate_voters) + sum(illiterate_voters)) / tvbc.total_voters) * 100 as percentage
 from election_results
     join municipalities m on election_results.municipality_code = m.municipality_code

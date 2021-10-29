@@ -4,11 +4,8 @@
 */
 
 
-select distinct country_name,
-    sum(elementary_level)     elementary_level_total,
-    sum(high_school_level) as high_school_total,
-    sum(university_level)  as university_level_total
-from scholarship_level_result
-    join elections e on e.election_code = scholarship_level_result.election_code
-    join countries c on e.country_code = c.country_code
-group by country_name;
+select c.country_name, sum(elementary_lvl_voters) elementary, sum(high_school_lvl_voters) high_school, sum(university_level_voters) as university
+from election_results
+         join elections e on e.election_code = election_results.election_code
+         join countries c on c.country_code = e.country_code
+group by c.country_name;

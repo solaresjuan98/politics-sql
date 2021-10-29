@@ -7,9 +7,9 @@
 
 
 select max_values.country_name,
-    max_values.full_name,
-    (max_num_votes - min_num_votes)              as difference,
-    (max_votes_percetage - min_votes_percentage) as percentage_difference
+    -- max_values.full_name,
+    (max_num_votes - min_num_votes)              as difference
+-- (max_votes_percetage - min_votes_percentage) as percentage_difference
 from (
          -- Max values
          select country_name, full_name, max(num_votes) as max_num_votes, max(votes_percentage) as max_votes_percetage

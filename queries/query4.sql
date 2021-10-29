@@ -1,4 +1,11 @@
-select table3.country_name, table3.region_name, table3.max_value
+/*
+4.	Desplegar todas las regiones por país en las que predomina la raza indígena. 
+    Es decir, hay más votos que las otras razas
+
+*/
+
+
+select table3.country_name, table3.region_name, table3.max_value as total
 from (
          select table1.country_name, table1.region_name, table1.race_name, max(table1.total_votes) max_value
     from (
@@ -32,4 +39,4 @@ from (
 --
 group by table2.country_name, table2.region_name, table2.race_name
 order by table2.country_name;
-;
+

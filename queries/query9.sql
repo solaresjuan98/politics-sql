@@ -2,12 +2,16 @@
     9. Desplegar el nombre del país y el porcentaje de votos por raza.
 */
 
-
-select distinct countries.country_name, race_name, count(r.race_code) /cr.total * 100 as votes_percentage
-from countries
-         join elections e on countries.country_code = e.country_code
-         join race_result rr on e.election_code = rr.election_code
-         join race r on rr.race_code = r.race_code
-         join country_regions cr on countries.country_name = cr.country_name
-group by country_name, e.country_code, race_name
-order by country_name;
+select distinct c.country_name,
+    r.race_name,
+    -- sum(election_results.illiterate_voters + election_results.literate_voters) as sub_total,
+    -- cvc.total_sum,
+    ((sum(election_results.illiterate_voters + election_results.literate_voters) / cvc.total_sum) *
+                 100) as race_pct
+from election_results
+    join elections e on election_results.election_code = e.election_code
+    join race r on election_results.race_code = r.race_code
+    join countries c on c.country_code = e.country_code
+    join countries_votes_count cvc on c.country_name = cvc.country_name
+group by c.country_name, r.race_name
+order by country_name, race_pct;

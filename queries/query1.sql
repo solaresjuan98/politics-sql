@@ -6,7 +6,6 @@
         obtuvo de votos en su país.
 
 */
-
 select election_name, election_year, country_name, full_name, max(voters_percentage)
 from (
          select election_name,
@@ -20,6 +19,8 @@ from (
         join politic_party pp on election_results.pp_code = pp.pol_party_code
         join countries_votes_count cvc on c.country_name = cvc.country_name
     group by election_name, election_year, c.country_name, pp.full_name
-    order by country_name
+    order by country_name,  voters_percentage desc
      ) temptable
 group by election_name, election_year, country_name;
+
+
