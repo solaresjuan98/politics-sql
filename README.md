@@ -145,3 +145,9 @@ De igual forma que en la tabla de raza, el dato "sexo" era muy frecuente en la t
 En la tabla resultados se eliminaron las referencias literales a lo referente al sexo, pais, partido politico, raza y municipio, quedando unicamente los resultados de las elecciones.
 
 ![resultados_3fn](img/3FN/resultados_3fn.png)
+
+
+# MODELO RELACIONAL RESULTANTE
+
+![modelo_er](img/ERModelBDp2.png)
+

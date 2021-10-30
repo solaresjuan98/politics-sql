@@ -43,6 +43,18 @@ select distinct election_name, election_year, c.country_code
 from temporal_table
     join countries c on temporal_table.country = c.country_name;
 
+insert into gender
+    (gender_type)
+select distinct gender
+from temporal_table;
+
+insert into race
+    (race_name)
+select distinct race
+from temporal_table;
+
+
+/*
 -- INSERT DATA INTO 'LITERACY_LEVEL'
 insert into literacy_level_result
     (municipality_code, election_code, literate_voters, illiterate_voters)
@@ -142,7 +154,7 @@ from temporal_table
         and d.department_code = m.department_code
     join race ra on temporal_table.race = ra.race_name;
 
-
+*/
 
 insert into election_results
     (election_code, municipality_code, gender_code, race_code, pp_code, illiterate_voters,
