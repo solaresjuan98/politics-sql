@@ -15,19 +15,19 @@ as
      ) temp
     group by country_name;
 
-
+*/
 -- View Guatemala_departments - DELETE
 create view Guatemala_departments
 as
-    select distinct c.country_name, department_name, sum(literate_voters) + sum(illiterate_voters) as total_voters
-    from literacy_level_result
-        join municipalities m on literacy_level_result.municipality_code = m.municipality_code
-        join departments d on d.department_code = m.department_code
-        join regions r on d.region_code = r.region_code
-        join countries c on r.country_code = c.country_code
-    where country_name = 'Guatemala'
-    group by c.country_name, department_name;
-*/
+select c.country_name, department_name, sum(literate_voters) + sum(illiterate_voters) as total_voters
+from election_results
+         join municipalities m on election_results.municipality_code = m.municipality_code
+         join departments d on d.department_code = m.department_code
+         join regions r on d.region_code = r.region_code
+         join countries c on r.country_code = c.country_code
+where country_name = 'Guatemala'
+group by c.country_name, department_name;
+
 
 
 -- View countries_votes_count
